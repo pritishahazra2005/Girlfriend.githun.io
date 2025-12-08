@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For My Love</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 2s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  h1 { font-size: 2rem; color: #ff5ea6; margin-bottom: 10px; }
+  p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  }
+  button.play-button {
+    display: inline-block;
+    background: #ff99c8;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  button.play-button:hover { background: #ff74b0; }
+  .hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .heart {
+    position: absolute;
+    color: #ff5ea6;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes float {
+    from { transform: translateY(100vh) scale(0.6); }
+    to { transform: translateY(-10vh) scale(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+  <h1>Hi My Love ❤️</h1>
+  <p>I made this little space on the internet just for you — because you deserve something soft, warm, and full of love.</p>
+
+  <img src="WhatsApp Image 2024-12-08 at 21.50.21_be8ff4f0.jpg" alt="Our Photo" />
+
+  <p>Here’s a song that reminds me of us, always. 🎶</p>
+
+  <!-- Play/Pause Button with UploadFiles.io MP3 -->
+  <button class="play-button" id="playBtn">Play Song 🎵</button>
+  <audio id="loveSong" src="Frankie_Valli_and_The_4_Seasons_-_Can_t_Take_My_Eyes_off_You_I_Love_You_Baby_(mp3.pm).mp3"></audio>
+
+  <p style="font-size:0.9rem; color:#777;">Made with love, just for you. ♡</p>
+</div>
+
+<script>
+  // Hearts animation
+  function createHearts() {
+    const container = document.getElementById('hearts');
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      heart.style.fontSize = 15 + Math.random() * 25 + 'px';
+      container.appendChild(heart);
+    }
+  }
+  createHearts();
+
+  // Play/Pause Button
+  const playBtn = document.getElementById('playBtn');
+  const audio = document.getElementById('loveSong');
+
+  playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = 'Pause Song ⏸️';
+    } else {
+      audio.pause();
+      playBtn.textContent = 'Play Song 🎵';
+    }
+  });
+</script>
+
+</body>
+</html>
