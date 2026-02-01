@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You 💕</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+
+  /* floating hearts */
+  .heart {
+    position: absolute;
+    color: #ff6f91;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+  }
+
+  .card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(255, 105, 135, 0.25);
+    text-align: center;
+    width: 90%;
+    max-width: 380px;
+    z-index: 10;
+  }
+
+  h1 {
+    color: #ff4f81;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #555;
+    font-size: 15px;
+  }
+
+  .buttons {
+    margin-top: 30px;
+    position: relative;
+    height: 120px;
+  }
+
+  button {
+    padding: 14px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    position: absolute;
+    font-weight: 600;
+  }
+
+  #yes {
+    background: linear-gradient(135deg, #ff4f81, #ff85a2);
+    color: white;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 8px 20px rgba(255, 79, 129, 0.4);
+  }
+
+  #yes:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+
+  #no {
+    background: #f1f1f1;
+    color: #444;
+    left: 10%;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- floating hearts -->
+<span class="heart" style="left:10%">💗</span>
+<span class="heart" style="left:25%">💖</span>
+<span class="heart" style="left:40%">💕</span>
+<span class="heart" style="left:60%">💘</span>
+<span class="heart" style="left:75%">💞</span>
+<span class="heart" style="left:90%">💓</span>
+
+<div class="card" id="questionCard">
+  <h1>Signorina Das, you be my Valentine? 💌</h1>
+  <p>I promise to love you till the day I die 🧸</p>
+
+  <div class="buttons">
+    <button id="yes">Yes 💖</button>
+    <button id="no">No 🙈</button>
+  </div>
+</div>
+
+<div class="card hidden" id="yesCard">
+  <h1>YAYYYY 🥰🎉</h1>
+  <p>You just made my heart very very happy 💕</p>
+  <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Happy Dance">
+</div>
+
+<script>
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  const questionCard = document.getElementById("questionCard");
+  const yesCard = document.getElementById("yesCard");
+
+  noBtn.addEventListener("mouseover", () => {
+    const maxX = 260;
+    const maxY = 80;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  yesBtn.addEventListener("click", () => {
+    questionCard.classList.add("hidden");
+    yesCard.classList.remove("hidden");
+  });
+</script>
+
+</body>
+</html>
